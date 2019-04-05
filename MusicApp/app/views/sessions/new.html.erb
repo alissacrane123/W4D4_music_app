@@ -1,0 +1,25 @@
+<head>
+  <style>
+    h4 {color: purple; font-family: "Comic Sans MS", "Comic Sans", cursive; font-size: 100%;}
+    label, input {color: blue; font-family: "Comic Sans MS", "Comic Sans", cursive; font-size: 80%;}
+
+  </style>
+</head>
+
+<h4>Log in below:</h4>
+
+<form action="<%= session_url %>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    
+    <label for="email">Enter your email:</label>
+    <input type="text" id="email" name="user[email]">
+
+    <br>
+    
+    <label for="password">Enter your password:</label>
+    <input type="text" id="password" name="user[password]">
+
+    <br>
+
+    <input type="submit" value="Log me in!">
+</form>

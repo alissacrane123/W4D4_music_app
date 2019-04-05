@@ -1,0 +1,16 @@
+<head>
+  <style>
+    h5 {color: blue; font-family: "Comic Sans MS", "Comic Sans", cursive; font-size: 100%;}
+ 
+  </style>
+</head>
+
+<h5>Welcome to <%= @band.name %>'s page</h5>
+
+<form action="<%= band_url %>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="delete this band">
+
+</form>

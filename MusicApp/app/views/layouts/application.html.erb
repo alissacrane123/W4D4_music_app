@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    h1 {color: blue; font-family: "Marker Felt", fantasy; font-style: italic; font-size: 250%;}
+    h2 {color: purple; font-family: "Comic Sans MS", "Comic Sans", cursive; font-size: 140%;}
+    a, input {color: blue; font-family: "Comic Sans MS", "Comic Sans", cursive; font-size: 100%;}
+ 
+  </style>
+</head>
+
+<h1 align="center">MusicApp</h1>
+
+  <header>
+
+    <% if !current_user.nil? %>
+      <h2 align="center">Welcome back!</h2>
+        <form action="<%= session_url %>" method="post">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+          <input type="hidden" name="_method" value="delete">
+
+          <div class="buttons2">
+            <a href="<%= bands_url %>">See all bands</a>
+            <a href="<%= new_band_url %>">Submit new band</a>
+            <input type="submit" value="Logout! :(">
+          </div>
+
+        </form>
+        <br>
+        <br>
+
+    <% else %>
+      <h2 align="center">Welcome!</h2>
+        <div class="buttons">
+          <a href="<%= new_user_url %>">Sign up</a>
+          <br>
+          <div class='login'>
+            <a href="<%= new_session_url %>">Log in</a>
+          </div>
+          <br>
+          <br>
+        </div>
+    <% end %>
+
+  </header>
+
+  <head>
+    <title>MusicApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>

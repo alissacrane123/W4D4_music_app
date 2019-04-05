@@ -1,0 +1,21 @@
+<head>
+  <style>
+    h5 {color: purple; font-family: "Comic Sans MS", "Comic Sans", cursive; font-size: 100%;}
+    label, input {color: blue; font-family: "Comic Sans MS", "Comic Sans", cursive; font-size:90%;}
+ 
+  </style>
+</head>
+
+<h5>To submit a new band, enter the name below:</h5>
+
+<form action="<%= bands_url %>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+
+    <label for="band_name">Band name:</label>
+    
+    <input type="text" id="band_name" name="band[name]">
+
+    <input type="submit" value="Submit new band">
+
+</form>

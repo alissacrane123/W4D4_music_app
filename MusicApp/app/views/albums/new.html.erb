@@ -1,0 +1,42 @@
+<head>
+  <style>
+    h5 {color: purple; font-family: "Comic Sans MS", "Comic Sans", cursive; font-size: 100%;}
+    label, input {color: blue; font-family: "Comic Sans MS", "Comic Sans", cursive; font-size:90%;}
+ 
+  </style>
+</head>
+
+<h5>Enter a band's album below:</h5>
+
+<form action="<%= albums_url %>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="album[title]">
+
+    <br>
+
+    <label for="year">Year:</label>
+    <input type="text" id="year" name="album[year]">
+
+    <br>
+
+    <label for="band_name">Band</label>
+    <select name="album[band_id]" id="band_name">
+    <option disabled selected>-- Select a band --</option>
+        <% Band.all.each do |band| %>
+            <option 
+                value="<%= band.id %>">
+                <%= band.name %>
+            </option>     
+        <% end %>
+    </select>
+
+    <br>
+
+
+
+    <input type="submit" value="Submit new album">
+
+</form>
